@@ -29,6 +29,18 @@ LanScout 是一个局域网设备与 IP 扫描工具，支持 macOS 和 Windows�
 
 ## 使用
 
+### 下载安装
+
+到 [Releases](https://github.com/Qsnh/lanscout/releases) 下载对应系统的文件：
+
+| 系统 | 安装包 | 免安装版 |
+| --- | --- | --- |
+| macOS（Apple 芯片和 Intel） | `LanScout-<版本>-macos-universal.dmg`，打开后把 LanScout 拖进「应用程序」 | `LanScout-<版本>-macos-universal.zip`，解压即可运行 |
+| Windows x64 | `LanScout-<版本>-windows-amd64-setup.exe`，装在当前用户下，不需要管理员权限 | `LanScout-<版本>-windows-amd64.zip`，解压后运行 `LanScout.exe` |
+| Windows ARM64 | `LanScout-<版本>-windows-arm64-setup.exe` | `LanScout-<版本>-windows-arm64.zip` |
+
+应用暂未做代码签名：macOS 第一次打开时如果提示无法打开或无法验证，请到「系统设置 › 隐私与安全性」，在页面下方点「仍要打开」；Windows 如果提示「Windows 已保护你的电脑」，点「更多信息」，再点「仍要运行」。
+
 ### 直接运行
 
 ```sh
@@ -69,6 +81,21 @@ go tool mygo build -platform darwin/universal,windows/amd64,windows/arm64
 | Windows | `LanScout.exe`（图形界面程序，不会弹出控制台窗口）；装了 [NSIS](https://nsis.sourceforge.io) 的话还会生成安装包 `LanScout Setup 0.1.0 amd64.exe` |
 
 MyGo 不需要 cgo，所以在 Mac 上就能直接编出 Windows 版本。要正式分发的话，需要先签名，参见 [MyGo 的分发文档](https://mygo.egoist.dev/docs/distribution)。
+
+### 发布新版本
+
+推送 `v` 开头的版本标签，GitHub Actions（[`.github/workflows/release.yml`](.github/workflows/release.yml)）就会构建上面「下载安装」里的所有文件，全部成功后创建 GitHub Release，并附上 `SHA256SUMS.txt`：
+
+```sh
+git tag v0.2.0
+git push origin v0.2.0
+```
+
+- 版本号以标签为准，构建时写进 `mygo.json`，不用先改文件。仓库里 `mygo.json` 的版本号只影响本地打包。
+- 标签带后缀（如 `v0.2.0-beta.1`）会发布成预发布版本。
+- macOS 版在 macOS 机器上构建（制作 dmg 需要 macOS），构建前先跑一遍单元测试；Windows 版在 Ubuntu 上交叉编译，用 NSIS 生成安装程序。
+- 如果先在 GitHub 网页上手动创建了 Release（同时创建标签），构建好的文件会传到这个 Release 里，不会改动你写的说明。
+- 推送到 main 的提交改了打包相关的文件（这个 workflow、`mygo.json`、`go.mod`、`go.sum`、`resources/`）时，也会试构建一次，但不发布，产物在 Actions 运行页面的 Artifacts 里。也可以在 Actions 页面手动运行（Run workflow）。
 
 ## 开发
 
