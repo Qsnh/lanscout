@@ -47,8 +47,6 @@ LanScout 是一款 macOS 和 Windows 桌面应用。打开后它会自动扫描�
 - Windows 10 或 11，x64 或 ARM64
 - 不需要管理员权限，也不需要另外安装运行库；安装包不到 10 MB
 
-> Windows 版还没有在 Windows 电脑上完整测试过。如果遇到问题，欢迎到 [Issues](https://github.com/Qsnh/lanscout/issues) 反馈。
-
 ## 下载安装
 
 到 [Releases](https://github.com/Qsnh/lanscout/releases) 下载最新版本：
