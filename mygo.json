@@ -1,0 +1,16 @@
+{
+  "name": "LanScout",
+  "identifier": "dev.lanscout.app",
+  "version": "0.1.0",
+  "copyright": "© 2026 LanScout",
+  "out": "build",
+  "macos": {
+    "infoPlist": {
+      "NSLocalNetworkUsageDescription": "LanScout 需要访问局域网，以扫描网络中的设备和它们使用的 IP 地址。",
+      "LSApplicationCategoryType": "public.app-category.utilities"
+    }
+  },
+  "linux": {
+    "comment": "扫描局域网中的设备和 IP 地址"
+  }
+}
