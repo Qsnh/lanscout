@@ -41,8 +41,6 @@ LanScout 是一款 macOS 和 Windows 桌面应用。打开后它会自动扫描�
 - **导出**：可以把网段里每个地址的状态（在线 / 曾使用 / 空闲）和设备信息导出成 CSV，用 Excel 直接打开；也可以把在线设备列表复制下来，粘贴到表格里。
 - 跟随系统的浅色/深色模式；按 ⌘R（macOS）或 Ctrl+R（Windows）重新扫描。
 
-![IP 分布图](docs/map.png)
-
 ## 系统要求
 
 - macOS 12 或更高版本，Apple 芯片和 Intel 芯片的 Mac 都可以
