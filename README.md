@@ -116,3 +116,7 @@ macOS 请检查「本地网络」权限（见「第一次使用」）；Windows 
 ## 从源码构建
 
 开发、打包和发布说明见 [docs/DEVELOPMENT.md](docs/DEVELOPMENT.md)。
+
+## 许可协议
+
+LanScout 以 [GNU 通用公共许可证第 3 版](LICENSE)（GPL-3.0）或任何更新的版本发布。你可以自由使用、修改和分发；分发它或基于它修改的版本时，需要同样以 GPL 公开源代码。
